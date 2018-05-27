@@ -1,0 +1,47 @@
+html, body {
+    height : 100%;
+    }
+body {
+    background: url(images/back_main.jpg) 0% 0% no-repeat;
+    background-size: 100% auto;
+    background-color : #000000;
+}
+#up-bar {
+    border-bottom-width : 1px;
+}
+div {
+	padding : 1em;
+}
+.left {
+	float : left;
+}
+.right {
+	float : right;
+}
+.clear {
+	clear : both;
+}
+.image {
+	padding : 2em;
+}
+.nav {
+    text-align : center;
+	padding : 0.5em;
+}
+.nav > a {
+    color : #ffffff;
+    text-decoration : none;
+}
+.container {
+     max-width : 100%;
+ }
+@media (max-width: 550px) {
+    .nav {
+        width : 100%;
+    }
+}
+@media (min-width: 550px) {
+    .nav {
+        width : 10em;
+    }
+}
