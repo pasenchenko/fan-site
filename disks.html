@@ -14,7 +14,7 @@
 
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-
+	<script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="skeleton.css">
     <link rel="stylesheet" href="style.css">
@@ -36,6 +36,20 @@
 		}
     </style>
 	<script>
+		var disksInfo = {
+			1 : 'The Dark Side of the Moon<br>1973 год',
+			2 : 'Wish You Were Here<br>1975 год',
+			3 : 'The Wall<br>1979 год',
+			4 : 'Animals<br>1977 год',
+			5 : 'The Division Bell<br>1994 год',
+			6 : 'Meddle<br>1971 год',
+			7 : 'P.U.L.S.E<br>1995 год',
+			8 : 'Atom Heart Mother<br>1970 год',
+			9 : 'The Final Cut<br>1983 год',
+			10 : 'The Endless River<br>2014 год',
+			11 : 'The Piper at the Gates of ...<br>1967 год',
+			12 : 'Ummagumma'
+		};
 		function getCoords(elem) {
 			var box = elem.getBoundingClientRect();
 			
@@ -45,7 +59,16 @@
 			};
 		}
 		function showInfo (id) {
-			alert(id);
+			alert(id.substr(4));
+			var coords = getCoords(g(id));
+			var infoDiv = document.createElement('div');
+			infoDiv.style.width = '120px';
+			infoDiv.style.height = '120px';
+			infoDiv.innerHTML = disksInfo[parseInt(id.substr(4))];
+			infoDiv.style.backgroundColor = '#000000';
+			infoDiv.style.position = 'absolute';
+			g('info-elems').appendChild(infoDiv);
+			infoDiv.style.pageX = coords.top;
 		}
 		
 		window.onload = function () {
@@ -86,18 +109,21 @@
 		Альбомы группы
 	</h1>
 	<div id="disks-images">
-	<img id="disk1" src="./images/disk-1.png" alt="Disk 1">
-	<img id="disk2" src="./images/disk-2.jpg" alt="Disk 2">
-	<img id="disk3" src="./images/disk-3.jpg" alt="Disk 3">
-	<img id="disk4" src="./images/disk-4.jpg" alt="Disk 4">
-	<img id="disk5" src="./images/disk-5.jpg" alt="Disk 5">
-	<img id="disk6" src="./images/disk-6.jpg" alt="Disk 6">
-	<img id="disk7" src="./images/disk-7.jpg" alt="Disk 7">
-	<img id="disk8" src="./images/disk-8.jpg" alt="Disk 8">
-	<img id="disk9" src="./images/disk-9.jpg" alt="Disk 9">
-	<img id="disk10" src="./images/disk-10.jpg" alt="Disk 10">
-	<img id="disk11" src="./images/disk-11.jpg" alt="Disk 11">
-	<img id="disk12" src="./images/disk-12.jpg" alt="Disk 12">
+		<img id="disk1" src="./images/disk-1.png" alt="Disk 1">
+		<img id="disk2" src="./images/disk-2.jpg" alt="Disk 2">
+		<img id="disk3" src="./images/disk-3.jpg" alt="Disk 3">
+		<img id="disk4" src="./images/disk-4.jpg" alt="Disk 4">
+		<img id="disk5" src="./images/disk-5.jpg" alt="Disk 5">
+		<img id="disk6" src="./images/disk-6.jpg" alt="Disk 6">
+		<img id="disk7" src="./images/disk-7.jpg" alt="Disk 7">
+		<img id="disk8" src="./images/disk-8.jpg" alt="Disk 8">
+		<img id="disk9" src="./images/disk-9.jpg" alt="Disk 9">
+		<img id="disk10" src="./images/disk-10.jpg" alt="Disk 10">
+		<img id="disk11" src="./images/disk-11.jpg" alt="Disk 11">
+		<img id="disk12" src="./images/disk-12.jpg" alt="Disk 12">
+	</div>
+	<div id="info-elems">
+	
 	</div>
 </div>
 </body>

@@ -27,6 +27,7 @@ div {
 .nav {
     text-align : center;
 	padding : 0.5em;
+	background-color : #000000;
 }
 .nav > a {
     color : #ffffff;
