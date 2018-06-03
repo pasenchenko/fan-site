@@ -26,6 +26,13 @@
 		#info > h2 {
 			color : #ffffff;
 		}
+		#mainInfo {
+			background-color : #000000;
+			color : #ffccff;
+		}
+		input, textarea {
+			color : #9900ff;
+		}
     </style>
 </head>
 <body>
@@ -52,30 +59,30 @@
         </div>
     </div>
 	<h1>
-		Фотографии группы
+		О нас
 	</h1>
-	<div class="row">
-        <div class="one-third column">
-          <img class="u-max-full-width" src="images/photo-1.jpg">
-        </div>
-        <div class="one-third column">
-          <img class="u-max-full-width" src="images/photo-2.jpg">
-        </div>
-		<div class="one-third column">
-          <img class="u-max-full-width" src="images/photo-3.jpg">
-        </div>
-    </div>
-	<div class="row">
-        <div class="one-third column">
-          <img class="u-max-full-width" src="images/photo-4.jpg">
-        </div>
-        <div class="one-third column">
-          <img class="u-max-full-width" src="images/photo-5.jpg">
-        </div>
-		<div class="one-third column">
-          <img class="u-max-full-width" src="images/photo-6.jpg">
-        </div>
-    </div>
+	<div id="mainInfo">
+		Мы - фанаты группы Pink Floyd. Вы можете связаться с нами, заполнив следующую форму: 
+		<form action="https://flogiston.space/pink-floyd-feedback.php" method="POST">
+			<div class="row">
+				<div class="six columns">
+					<label for="name">Имя</label>
+					<input class="u-full-width" placeholder="your@email.com" name="nick" id="name" type="text">
+				</div>
+				<div class="six columns">
+					<label for="email">E-mail</label>
+					<input class="u-full-width" placeholder="your@email.com" name="email" id="email" type="email">
+				</div>
+			</div>
+			<div class="row">
+				<div class="twelwe columns">
+					<label for="message">Сообщение</label>
+					<textarea class="u-full-width" placeholder="Замечательный сайт!..." id="message" name="text"></textarea>
+				</div>
+				<input class="button-primary" value="Отправить!" type="submit">
+			</div>
+		</form>
+	</div>
 </div>
 </body>
 </html>

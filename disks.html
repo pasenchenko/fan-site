@@ -19,17 +19,19 @@
     <link rel="stylesheet" href="skeleton.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        h1 {
-			text-align : center;
-			font-size : 2.5em;
-			color : pink;
-		}
 		#info {
 			background-color : #000000;
 			color : violet;
 		}
 		#info > h2 {
 			color : #ffffff;
+		}
+		#infoDiv {
+			display : none;
+			position : absolute;
+			width : 80px;
+			color : #ffffff;
+			background-color : #003366;
 		}
 		#disks-images {
 			text-align : center;
@@ -48,35 +50,46 @@
 			9 : 'The Final Cut<br>1983 год',
 			10 : 'The Endless River<br>2014 год',
 			11 : 'The Piper at the Gates of ...<br>1967 год',
-			12 : 'Ummagumma'
+			12 : 'Ummagumma<br>1969 год'
 		};
-		function getCoords(elem) {
-			var box = elem.getBoundingClientRect();
-			
-			return {
-				top: box.top + pageYOffset,
-				left: box.left + pageXOffset
-			};
+		function moveInfo (e) {
+			var infoS = g('infoDiv').style;
+			w = 120;
+			if (document.all) { 
+				x = event.x + document.body.scrollLeft; 
+				y = event.y + document.body.scrollTop; 
+			} else { 
+				x = e.pageX;
+				y = e.pageY;
+			}
+			if ((x + w + 10) < document.body.clientWidth) { 
+				infoS.left = x + 'px';
+			} else { 
+				infoS.left = x - w + 'px';
+			}
+			infoS.top = y + 20 + 'px';
 		}
 		function showInfo (id) {
-			alert(id.substr(4));
-			var coords = getCoords(g(id));
-			var infoDiv = document.createElement('div');
-			infoDiv.style.width = '120px';
-			infoDiv.style.height = '120px';
-			infoDiv.innerHTML = disksInfo[parseInt(id.substr(4))];
-			infoDiv.style.backgroundColor = '#000000';
-			infoDiv.style.position = 'absolute';
-			g('info-elems').appendChild(infoDiv);
-			infoDiv.style.pageX = coords.top;
+			g('infoDiv').innerHTML = disksInfo[id.substr(4)];
+			g('infoDiv').style.display = 'block';
+		}
+		function hideInfo (id) {
+			g('infoDiv').style.display = 'none';
 		}
 		
 		window.onload = function () {
+			document.onmousemove = moveInfo;
 			var images = document.querySelectorAll('#disks-images > img');
 			for (var i = 0; i < images.length; i++) {
 				images[i].onclick = function () {
 					showInfo(this.id);
-				}
+				};
+				images[i].onmouseover = function () {
+					showInfo(this.id);
+				};
+				images[i].onmouseout = function () {
+					hideInfo(this.id);
+				};
 			}
 		}
 	</script>
@@ -89,9 +102,12 @@
 
 <div class="container">
 	<div class="row">
-		<div class="four columns">
-			&nbsp;
+		<div class="three columns nav">
+			<a href="index.html">
+				<img class="u-max-full-width" src="images/pink-floyd-logo.jpg" alt="logo">
+			</a>
 		</div>
+		
 		<div class="two columns nav">
             <a href="about.html">О группе</a>
         </div>
@@ -102,7 +118,7 @@
             <a href="photoalbum.html">Фото</a>
         </div>
         <div class="two columns nav">
-            <a href="contacts.html">Цитаты</a>
+            <a href="contacts.html">О нас</a>
         </div>
     </div>
 	<h1>
@@ -122,9 +138,9 @@
 		<img id="disk11" src="./images/disk-11.jpg" alt="Disk 11">
 		<img id="disk12" src="./images/disk-12.jpg" alt="Disk 12">
 	</div>
-	<div id="info-elems">
+</div>
+<div id="infoDiv">
 	
-	</div>
 </div>
 </body>
 </html>
